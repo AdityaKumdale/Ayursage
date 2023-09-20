@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "745896151113",
+    "project_id": "ayursage",
+    "storage_bucket": "ayursage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745896151113:android:e421e50c1cf7621567d798",
+        "android_client_info": {
+          "package_name": "com.example.ayursage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaGXdXnLtJ2xpZ6zYlHj36Veiz2t9VBzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
