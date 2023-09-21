@@ -6,5 +6,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun Home() {
-    Text(text = "Home")
+    Text(text = "Homee")
 }

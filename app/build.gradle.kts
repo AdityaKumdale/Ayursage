@@ -68,7 +68,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    val nav_version = "2.7.2"
+    val nav_version = "2.7.0"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
@@ -79,4 +79,6 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
+
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.1")
 }

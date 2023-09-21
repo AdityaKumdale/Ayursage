@@ -11,12 +11,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.ayursage.R
 import com.example.ayursage.navigation.Routes
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 @Composable
-fun Splash(navController: NavController) {
+fun Splash(navController: NavHostController) {
 
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
 
@@ -34,9 +36,20 @@ fun Splash(navController: NavController) {
         Text(text = "Splash")
 
         LaunchedEffect(key1 = true){
-        delay(3000)
+            delay(3000)
 
-        navController.navigate(Routes.BottomNav.routes)
+            if (FirebaseAuth.getInstance().currentUser!=null){
+                navController.navigate(Routes.BottomNav.routes){
+                    popUpTo(navController.graph.startDestinationId)               //will not go to splash again after pressing back
+                    launchSingleTop = true
+                }
+            }else{
+                navController.navigate(Routes.Login.routes){
+                    popUpTo(navController.graph.startDestinationId)               //will not go to splash again after pressing back
+                    launchSingleTop = true
+                }
+            }
+
     }
 
 }

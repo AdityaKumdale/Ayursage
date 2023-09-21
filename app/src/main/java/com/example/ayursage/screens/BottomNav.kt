@@ -11,37 +11,38 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.ayursage.model.BottomNavItem
 import com.example.ayursage.navigation.Routes
-import java.lang.reflect.Modifier
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BottomNav(navHostController: NavHostController) {
+fun BottomNav(navController: NavHostController) {
+
     val navController1 = rememberNavController()
+
     Scaffold(bottomBar = { MyBottomBar(navController1) }) { innerPadding->
         NavHost(navController = navController1, startDestination = Routes.Home.routes,
-            modifier =  androidx.compose.ui.Modifier.padding(innerPadding)){
+            modifier = Modifier.padding(innerPadding)){
 
-            composable(Routes.Home.routes){
+            composable(route = Routes.Home.routes){
                 Home()
             }
 
-            composable(Routes.Profile.routes){
-                Profile()
-            }
-
-            composable(Routes.Search.routes){
+            composable(route =Routes.Search.routes){
                 Search()
             }
 
-
+            composable(route =Routes.Profile.routes){
+                Profile(navController)
+            }
         }
         
     }
