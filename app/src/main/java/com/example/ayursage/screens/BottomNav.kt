@@ -40,7 +40,7 @@ fun BottomNav(navController: NavHostController) {
     Scaffold(bottomBar = { MyBottomBar(navController1) }) {
             innerPadding->
 
-        NavHost(navController = navController1, startDestination = Routes.Home.routes,
+        NavHost(navController = navController1, startDestination = Routes.Search.routes,
             modifier = Modifier.padding(innerPadding)){
 
             composable(route = Routes.Home.routes){
@@ -93,7 +93,7 @@ fun MyBottomBar(navController1: NavHostController) {
                         saveState = true
                     }
                     launchSingleTop = true
-                    //restoreState = true
+                    restoreState = true
                 }
             }, icon = {
                 Icon(imageVector = it.icon, contentDescription = it.title)
