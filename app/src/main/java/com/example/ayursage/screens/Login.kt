@@ -1,5 +1,6 @@
 package com.example.ayursage.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,6 +40,16 @@ fun Login(navController: NavHostController) {
 
     val authViewModel:AuthViewModel= viewModel()
     val firebaseUser by authViewModel.firebaseUser.observeAsState()
+    val error by authViewModel.error.observeAsState()
+
+    LaunchedEffect(error){
+        if(firebaseUser!=null){
+            navController.navigate(Routes.BottomNav.routes){
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
+        }
+    }
 
     LaunchedEffect(firebaseUser ){
         if(firebaseUser!=null){
@@ -49,6 +60,12 @@ fun Login(navController: NavHostController) {
         }
     }
 
+    val context = LocalContext.current
+
+    error?.let {
+        Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+    }
+
     var email by remember {
         mutableStateOf("")
     }
@@ -57,7 +74,7 @@ fun Login(navController: NavHostController) {
         mutableStateOf("")
     }
 
-    var context = LocalContext.current
+
 
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -93,8 +110,10 @@ fun Login(navController: NavHostController) {
         Box(modifier = Modifier.height(50.dp))
 
         ElevatedButton(onClick = {
-
-                                 authViewModel.login(email,password,context)
+        if (email.isEmpty()){
+            Toast.makeText(context,"Please provide all fields",Toast.LENGTH_SHORT).show()
+        }else
+            authViewModel.login(email,password,context)
 
         },modifier = Modifier.fillMaxWidth()) {
             Text(text ="Login" , style = TextStyle(

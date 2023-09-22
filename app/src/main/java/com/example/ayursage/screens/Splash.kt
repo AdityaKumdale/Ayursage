@@ -39,7 +39,7 @@ fun Splash(navController: NavHostController) {
             delay(3000)
 
             if (FirebaseAuth.getInstance().currentUser!=null){
-                navController.navigate(Routes.BottomNav.routes){
+                navController.navigate(Routes.Home.routes){
                     popUpTo(navController.graph.startDestinationId)               //will not go to splash again after pressing back
                     launchSingleTop = true
                 }

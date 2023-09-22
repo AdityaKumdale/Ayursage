@@ -41,7 +41,7 @@ class AuthViewModel : ViewModel(){
 
                     getdata(auth.currentUser!!.uid,context)
                 }else{
-                    _error.postValue("Something went wrong.")
+                    _error.postValue(it.exception!!.message)
                 }
             }
     }
