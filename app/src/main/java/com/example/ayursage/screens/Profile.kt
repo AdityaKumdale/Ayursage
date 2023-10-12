@@ -44,8 +44,8 @@ fun Profile(navHostController: NavHostController) {
         }
     }
 
-    LazyColumn(){
-        item {
+
+
             ConstraintLayout(
                 modifier = Modifier
                     .fillMaxSize()
@@ -69,7 +69,7 @@ fun Profile(navHostController: NavHostController) {
                     Text(text = "Logout")
                 }
             }
-        }
-    }
+
+
 
 }

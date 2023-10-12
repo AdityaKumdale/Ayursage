@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.ayursage.screens.BottomNav
+
 
 import com.example.ayursage.screens.Home
 import com.example.ayursage.screens.Login
@@ -21,20 +21,20 @@ fun NavGraph(navController: NavHostController) {
         }
 
         composable(Routes.Home.routes){
-            Home()
+            Home(navController)
         }
 
         composable(Routes.Profile.routes){
             Profile(navController)
         }
 
-        composable(Routes.Search.routes){
-            Search()
-        }
+//        composable(Routes.Search.routes){
+//            Search()
+//        }
 
-        composable(Routes.BottomNav.routes){
-            BottomNav(navController)
-        }
+//        composable(Routes.BottomNav.routes){
+//            BottomNav(navController)
+//        }
 
         composable(Routes.Login.routes){
             Login(navController)
